@@ -6,37 +6,34 @@
 package bo.usfx.sis457.entidades;
 
 import bo.usfx.sis457.Utilitarios;
+import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Calendar;
 
 /**
  *
- * @author Marcelo
+ * @author Jhamil
  */
 public class Docente extends Persona {
-    protected String Contrato;
     protected String Titulo;
- 
-    public Docente(String contrato, String titulo, String carnetIdentidad, String nombre, Calendar fechaNacimiento) {
+    protected int AnosDeExperiencia;
+    protected String[] Asignaturas;
+
+    public Docente(String Titulo, int AnosDeExperiencia, String carnetIdentidad, String nombre, Calendar fechaNacimiento, String[] Asignaturas) {
         super(carnetIdentidad, nombre, fechaNacimiento);
-        this.Contrato = contrato;
-        this.Titulo = titulo;
+        this.Titulo = Titulo;
+        this.AnosDeExperiencia = AnosDeExperiencia;
+        this.Asignaturas = Asignaturas;
     }
 
-    public Docente(String contrato, String titulo) {
-        this.Contrato = contrato;
-        this.Titulo = titulo;
+    public Docente(String Titulo, int AnosDeExperiencia, String[] Asignaturas) {
+        this.Titulo = Titulo;
+        this.AnosDeExperiencia = AnosDeExperiencia;
+        this.Asignaturas = Asignaturas;
     }
 
-    public Docente() {
+    public Docente(){
         
-    }
-
-    public String getContrato() {
-        return Contrato;
-    }
-
-    public void setContrato(String Contrato) {
-        this.Contrato = Contrato;
     }
 
     public String getTitulo() {
@@ -47,14 +44,35 @@ public class Docente extends Persona {
         this.Titulo = Titulo;
     }
 
+    public int getAnosDeExperiencia() {
+        return AnosDeExperiencia;
+    }
+
+    public void setAnosDeExperiencia(int AnosDeExperiencia) {
+        this.AnosDeExperiencia = AnosDeExperiencia;
+    }
+
+    public String[] getAsignaturas() {
+        return Asignaturas;
+    }
+
+    public void setAsignaturas(String Asignaturas) {
+        
+        this.Asignaturas = Asignaturas.split(",");
+    }
+    
+    
+    
+
     @Override
     public String toString() {
-        return "Profesor{" 
+        return "Docente{" 
                 + "Id=" + this.Id 
                 + ", CarnetIdentidad=" + this.CarnetIdentidad 
                 + ", Nombre=" + this.Nombre 
                 + ", FechaNacimiento=" + Utilitarios.getFechaCalendario(this.FechaNacimiento)
-                + ", Contrato=" + Contrato + ", Titulo=" + Titulo + '}';
-    }
-    
+                + ", Años de Experiencia=" +this.AnosDeExperiencia
+                + ", Asignaturas=" + Arrays.toString(this.Asignaturas)
+                + ", Titulo=" + Titulo + '}';
+    }   
 }
