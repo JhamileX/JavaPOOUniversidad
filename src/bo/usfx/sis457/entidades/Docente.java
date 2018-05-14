@@ -12,22 +12,22 @@ import java.util.Calendar;
  *
  * @author Marcelo
  */
-public class Profesor extends Persona {
+public class Docente extends Persona {
     protected String Contrato;
     protected String Titulo;
  
-    public Profesor(String contrato, String titulo, String carnetIdentidad, String nombre, Calendar fechaNacimiento) {
+    public Docente(String contrato, String titulo, String carnetIdentidad, String nombre, Calendar fechaNacimiento) {
         super(carnetIdentidad, nombre, fechaNacimiento);
         this.Contrato = contrato;
         this.Titulo = titulo;
     }
 
-    public Profesor(String contrato, String titulo) {
+    public Docente(String contrato, String titulo) {
         this.Contrato = contrato;
         this.Titulo = titulo;
     }
 
-    public Profesor() {
+    public Docente() {
         
     }
 

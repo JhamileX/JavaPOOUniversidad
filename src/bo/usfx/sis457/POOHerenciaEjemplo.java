@@ -27,10 +27,10 @@ public class POOHerenciaEjemplo {
         personas = new ArrayList<>();
         
         personas.add(new Alumno("35-1", 1));
-        personas.add(new Profesor("1", "Licenciado en Informática", "222222", "Juan Perez", new GregorianCalendar(1980, 11,01)));
+        personas.add(new Docente("1", "Licenciado en Informática", "222222", "Juan Perez", new GregorianCalendar(1980, 11,01)));
         personas.add(new Alumno("35-2", 1));
         personas.add(new Alumno("35-3", 1));
-        personas.add(new Profesor("2", "Ingeniero de Sistemas"));
+        personas.add(new Docente("2", "Ingeniero de Sistemas"));
         personas.add(new Alumno("35-4", 1));
         
         menuPrincipal();
@@ -230,7 +230,7 @@ public class POOHerenciaEjemplo {
         System.out.println("+==================================================+");
         int i = 0;
         for (Persona profesor: personas) {
-            if (profesor instanceof Profesor) {
+            if (profesor instanceof Docente) {
                 i++;
                 System.out.println(i + ": " + profesor);
             }
@@ -266,7 +266,7 @@ public class POOHerenciaEjemplo {
             Date fechaNacimientoDate = new SimpleDateFormat("yyyy-MM-dd").parse(fechaNacimiento);
             Calendar fechaNacimientoCalendario = Calendar.getInstance();
             fechaNacimientoCalendario.setTime(fechaNacimientoDate);
-            personas.add(new Profesor(contrato, titulo, carnetIdentidad, nombre, fechaNacimientoCalendario));
+            personas.add(new Docente(contrato, titulo, carnetIdentidad, nombre, fechaNacimientoCalendario));
             System.out.println("Registro de Profesor completado!");
         } catch(Exception ex) {
             System.out.println("Error: " + ex.getMessage());
@@ -275,7 +275,7 @@ public class POOHerenciaEjemplo {
     
     public static void modificarProfesor() {
         int id;
-        Profesor profesor;
+        Docente profesor;
         BufferedReader entradaTeclado = new BufferedReader(new InputStreamReader(System.in));
         
         limpiarConsola();
@@ -286,7 +286,7 @@ public class POOHerenciaEjemplo {
             System.out.print("Introduzca el Id del Profesor a Modificar: ");
             id = buscarPersona(Integer.parseInt(entradaTeclado.readLine()));
             if (id > -1) {
-                profesor = (Profesor)personas.get(id);
+                profesor = (Docente)personas.get(id);
                 System.out.print("Modificar el Carnet de Identidad '" + profesor.getCarnetIdentidad()+ "': ");
                 profesor.setCarnetIdentidad(entradaTeclado.readLine());
                 System.out.print("Modificar el Nombre '" + profesor.getNombre() + "': ");
