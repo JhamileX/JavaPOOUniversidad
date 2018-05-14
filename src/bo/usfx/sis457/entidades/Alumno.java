@@ -6,6 +6,8 @@
 package bo.usfx.sis457.entidades;
 
 import bo.usfx.sis457.Utilitarios;
+import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Calendar;
 import java.util.GregorianCalendar;
 
@@ -16,20 +18,22 @@ import java.util.GregorianCalendar;
 public class Alumno extends Persona {
     protected String CarnetUniversitario;
     protected int Semestre;
-    
-    public Alumno(String carnetUniversitario, int semestre, String carnetIdentidad, String nombre, Calendar fechaNacimiento) {
+    protected String[] Asignaturas;
+
+    public Alumno(String CarnetUniversitario, int Semestre, String[] Asignaturas, String carnetIdentidad, String nombre, Calendar fechaNacimiento) {
         super(carnetIdentidad, nombre, fechaNacimiento);
-        this.CarnetUniversitario = carnetUniversitario;
-        this.Semestre = semestre;
-        //System.out.println("Se crea un Alumno");
+        this.CarnetUniversitario = CarnetUniversitario;
+        this.Semestre = Semestre;
+        this.Asignaturas = Asignaturas;
+    }
+
+    public Alumno(String CarnetUniversitario, int Semestre, String[] Asignaturas) {
+        this.CarnetUniversitario = CarnetUniversitario;
+        this.Semestre = Semestre;
+        this.Asignaturas = Asignaturas;
     }
     
-    public Alumno(String carnetUniversitario, int semestre) {
-        super();
-        this.CarnetUniversitario = carnetUniversitario;
-        this.Semestre = semestre;
-        //System.out.println("Se crea un Alumno");
-    }
+    
     
     public String getCarnetUniversitario() {
         return CarnetUniversitario;
@@ -47,6 +51,15 @@ public class Alumno extends Persona {
         this.Semestre = semestre;
     }
 
+    public String[] getAsignaturas() {
+        return Asignaturas;
+    }
+
+    public void setAsignaturas(String Asignaturas) {
+        this.Asignaturas = Asignaturas.split(",");
+    }
+
+
     @Override
     public String toString() {
         return "Alumno{" 
@@ -55,6 +68,7 @@ public class Alumno extends Persona {
                 + ", Nombre=" + this.Nombre 
                 + ", FechaNacimiento=" + Utilitarios.getFechaCalendario(this.FechaNacimiento)
                 + ", CarnetUniversitario=" + this.CarnetUniversitario 
-                + ", Semestre=" + this.Semestre + '}';
+                + ", Semestre=" + this.Semestre 
+                + ", Asignaturas=" + Arrays.toString(this.Asignaturas) + '}';
     }
 }
